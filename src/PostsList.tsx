@@ -1,5 +1,5 @@
 
-import { graphql } from '../src/gql'
+import { graphql } from './gql'
 import { useQuery } from '@apollo/client'
 import PostView from './PostView'
 
@@ -13,7 +13,7 @@ query getPosts ($limit: Int!) {
 `)
 
 
-function PostsScollArea() {
+function PostsList() {
     const { data } = useQuery(getPostsQuery, { variables: { limit: 10 } })
 
 
@@ -24,4 +24,4 @@ function PostsScollArea() {
     </div>
 }
 
-export default PostsScollArea;
+export default PostsList;

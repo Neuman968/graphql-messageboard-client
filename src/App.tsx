@@ -1,7 +1,7 @@
 import './App.css'
 import { AppShell, createTheme, MantineProvider } from '@mantine/core'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import PostsScollArea from './PostsScrollArea';
+import PostsList from './PostsList';
 
 const theme = createTheme({})
 const client = new ApolloClient({
@@ -17,7 +17,7 @@ function App() {
     <MantineProvider theme={theme}>
       <ApolloProvider client={client}>
       <AppShell>
-        <PostsScollArea/>
+        <PostsList/>
       </AppShell>
       </ApolloProvider>
     </MantineProvider>
