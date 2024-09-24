@@ -1,5 +1,5 @@
 import './App.css'
-import { AppShell, createTheme, MantineProvider, ScrollArea } from '@mantine/core'
+import { AppShell, createTheme, MantineProvider } from '@mantine/core'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import PostsScollArea from './PostsScrollArea';
 
