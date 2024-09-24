@@ -2,7 +2,6 @@
 import { graphql } from '../src/gql'
 import { useQuery } from '@apollo/client'
 import PostView from './PostView'
-import { ScrollArea } from '@mantine/core'
 
 
 const getPostsQuery = graphql(`
@@ -18,11 +17,11 @@ function PostsScollArea() {
     const { data } = useQuery(getPostsQuery, { variables: { limit: 10 } })
 
 
-    return <ScrollArea>
+    return <div>
         {data?.getPosts != null ?
             data?.getPosts.map((post) => <PostView post={post} />)
             : <></>}
-    </ScrollArea>
+    </div>
 }
 
 export default PostsScollArea;
