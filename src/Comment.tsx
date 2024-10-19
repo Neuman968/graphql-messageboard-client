@@ -1,37 +1,22 @@
-import { Avatar, Group, Paper, Text, TypographyStylesProvider } from '@mantine/core'
+import { Paper, Text, TypographyStylesProvider } from '@mantine/core'
 
 import classes from './Comment.module.css';
+import { User } from './gql/graphql';
+import UserAvatar from './UserAvatar';
 
 type Props = {
-    author: string,
+    author: User,
     text: string,
 }
 
 export function Comment(props: Props) {
     return (
-      <Paper withBorder radius="md" className={classes.comment}>
-        <Group>
-          <Avatar
-            alt={props.author}
-            radius="xl"
-          >
-              {props.author.charAt(0).toUpperCase()}
-          </Avatar>
-          <div>
-            <Text fz="sm">{props.author}</Text>
-            <Text fz="xs" c="dimmed">
-              10 minutes ago
-            </Text>
-          </div>
-        </Group>
+      <Paper h={100} withBorder radius="md" className={classes.comment}>
+        <UserAvatar user={props.author} />
         <TypographyStylesProvider className={classes.body}>
-          <div
-            className={classes.content}
-            dangerouslySetInnerHTML={{
-              __html:
-                props.text,
-            }}
-          />
+          <Text>
+            {props.text}
+          </Text>
         </TypographyStylesProvider>
       </Paper>
     );

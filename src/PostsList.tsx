@@ -2,6 +2,7 @@
 import { graphql } from './gql'
 import { useQuery } from '@apollo/client'
 import PostView from './PostView'
+import { Box, Paper } from '@mantine/core'
 
 
 const getPostsQuery = graphql(`
@@ -17,11 +18,15 @@ function PostsList() {
     const { data } = useQuery(getPostsQuery, { variables: { limit: 10 } })
 
 
-    return <div>
+    return <Paper>
         {data?.getPosts != null ?
-            data?.getPosts.map((post) => <PostView post={post} />)
+            data?.getPosts.map((post) =>
+                <Box pt={30}>
+                    <PostView post={post} />
+                </Box>
+            )
             : <></>}
-    </div>
+    </Paper>
 }
 
 export default PostsList;

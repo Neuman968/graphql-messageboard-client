@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n    fragment PostFragment on Post {\n      id\n      text\n      authorUser {\n        id\n        name\n      }\n      comments(limit: $limit) {\n        id\n        text\n        authorUser {\n          id\n          name\n        }\n      }\n    }\n  ": types.PostFragmentFragmentDoc,
+    "\n  fragment UserFragment on User {\n    id\n    name\n  }  \n  ": types.UserFragmentFragmentDoc,
     "\nquery getPosts ($limit: Int!) {\n  getPosts {\n      ...PostFragment\n  }\n}\n": types.GetPostsDocument,
 };
 
@@ -35,6 +36,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n    fragment PostFragment on Post {\n      id\n      text\n      authorUser {\n        id\n        name\n      }\n      comments(limit: $limit) {\n        id\n        text\n        authorUser {\n          id\n          name\n        }\n      }\n    }\n  "): (typeof documents)["\n    fragment PostFragment on Post {\n      id\n      text\n      authorUser {\n        id\n        name\n      }\n      comments(limit: $limit) {\n        id\n        text\n        authorUser {\n          id\n          name\n        }\n      }\n    }\n  "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment UserFragment on User {\n    id\n    name\n  }  \n  "): (typeof documents)["\n  fragment UserFragment on User {\n    id\n    name\n  }  \n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

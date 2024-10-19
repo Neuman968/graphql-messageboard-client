@@ -17,7 +17,7 @@ export type Scalars = {
 };
 
 export type AddNewCommentInput = {
-  postId: Scalars['Int']['input'];
+  postId: Scalars['String']['input'];
   text: Scalars['String']['input'];
 };
 
@@ -27,18 +27,18 @@ export type AddNewPostInput = {
 
 export type Comment = {
   __typename?: 'Comment';
-  authorUser: UserEntity;
-  authorUserId: Scalars['Int']['output'];
+  authorUser: User;
+  authorUserId: Scalars['ID']['output'];
   id: Scalars['ID']['output'];
   post: Post;
-  postId: Scalars['Int']['output'];
+  postId: Scalars['ID']['output'];
   text: Scalars['String']['output'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  addComment?: Maybe<Comment>;
-  addPost?: Maybe<Post>;
+  addComment: Comment;
+  addPost: Post;
 };
 
 
@@ -53,8 +53,8 @@ export type MutationAddPostArgs = {
 
 export type Post = {
   __typename?: 'Post';
-  authorUser: UserEntity;
-  authorUserId: Scalars['Int']['output'];
+  authorUser: User;
+  authorUserId: Scalars['ID']['output'];
   comments: Array<Comment>;
   id: Scalars['ID']['output'];
   text: Scalars['String']['output'];
@@ -67,42 +67,19 @@ export type PostCommentsArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  getComment?: Maybe<Comment>;
-  getComments?: Maybe<Array<Comment>>;
-  getPostComments?: Maybe<Array<Comment>>;
   getPosts?: Maybe<Array<Post>>;
-  getUser?: Maybe<UserEntity>;
-  getUserPosts?: Maybe<Array<Post>>;
-  getUsers?: Maybe<Array<Maybe<UserEntity>>>;
+  getUsers?: Maybe<Array<User>>;
 };
 
-
-export type QueryGetCommentArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
-export type QueryGetPostCommentsArgs = {
-  postId: Scalars['ID']['input'];
-};
-
-
-export type QueryGetUserArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
-export type QueryGetUserPostsArgs = {
-  userId?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type UserEntity = {
-  __typename?: 'UserEntity';
+export type User = {
+  __typename?: 'User';
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
 };
 
-export type PostFragmentFragment = { __typename?: 'Post', id: string, text: string, authorUser: { __typename?: 'UserEntity', id: string, name: string }, comments: Array<{ __typename?: 'Comment', id: string, text: string, authorUser: { __typename?: 'UserEntity', id: string, name: string } }> } & { ' $fragmentName'?: 'PostFragmentFragment' };
+export type PostFragmentFragment = { __typename?: 'Post', id: string, text: string, authorUser: { __typename?: 'User', id: string, name: string }, comments: Array<{ __typename?: 'Comment', id: string, text: string, authorUser: { __typename?: 'User', id: string, name: string } }> } & { ' $fragmentName'?: 'PostFragmentFragment' };
+
+export type UserFragmentFragment = { __typename?: 'User', id: string, name: string } & { ' $fragmentName'?: 'UserFragmentFragment' };
 
 export type GetPostsQueryVariables = Exact<{
   limit: Scalars['Int']['input'];
@@ -115,4 +92,5 @@ export type GetPostsQuery = { __typename?: 'Query', getPosts?: Array<(
   )> | null };
 
 export const PostFragmentFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"authorUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"comments"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"authorUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<PostFragmentFragment, unknown>;
+export const UserFragmentFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UserFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"User"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]} as unknown as DocumentNode<UserFragmentFragment, unknown>;
 export const GetPostsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPosts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getPosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostFragment"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"authorUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"comments"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"authorUser"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<GetPostsQuery, GetPostsQueryVariables>;

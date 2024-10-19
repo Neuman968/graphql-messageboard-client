@@ -5,7 +5,7 @@ import PostsList from './PostsList';
 
 const theme = createTheme({})
 const client = new ApolloClient({
-  uri: 'http://localhost:8811/graphql',
+  uri: 'http://localhost:8080/query',
   cache: new InMemoryCache(),
 });
 
@@ -14,7 +14,7 @@ function App() {
   // Data is of type GetPostData | undefined
 
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider defaultColorScheme="dark">
       <ApolloProvider client={client}>
       <AppShell>
         <PostsList/>
