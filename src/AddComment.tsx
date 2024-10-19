@@ -1,4 +1,4 @@
-import { Button, Grid, Textarea } from "@mantine/core";
+import { Box, Button, Grid, Textarea } from "@mantine/core";
 
 
 // type Props = {
@@ -16,7 +16,9 @@ function AddComment() {
                 />
             </Grid.Col>
             <Grid.Col span={3}>
-                <Button>Submit</Button>
+                <Box pt={20}>
+                    <Button>Submit</Button>
+                </Box>
             </Grid.Col>
         </Grid>
     )
