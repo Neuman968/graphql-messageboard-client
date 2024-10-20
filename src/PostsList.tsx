@@ -17,7 +17,6 @@ query getPosts ($limit: Int!) {
 function PostsList() {
     const { data } = useQuery(getPostsQuery, { variables: { limit: 10 } })
 
-
     return <Paper>
         {data?.getPosts != null ?
             data?.getPosts.map((post) =>
