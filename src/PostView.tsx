@@ -53,7 +53,7 @@ function PostView(props: Props) {
     <Card.Section>
       <Center>
         <Box w="75%" pt="10" pb="10">
-          <AddComment />
+          <AddComment postId={post.id}/>
         </Box>
       </Center>
     </Card.Section>

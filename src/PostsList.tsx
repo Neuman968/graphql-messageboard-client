@@ -5,7 +5,7 @@ import PostView from './PostView'
 import { Box, Paper } from '@mantine/core'
 
 
-const getPostsQuery = graphql(`
+export const getPostsQuery = graphql(`
 query getPosts ($limit: Int!) {
   getPosts {
       ...PostFragment

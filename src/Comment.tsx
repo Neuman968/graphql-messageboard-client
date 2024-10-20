@@ -11,7 +11,7 @@ type Props = {
 
 export function Comment(props: Props) {
     return (
-      <Paper h={100} withBorder radius="md" className={classes.comment}>
+      <Paper withBorder radius="md" className={classes.comment}>
         <UserAvatar user={props.author} />
         <TypographyStylesProvider className={classes.body}>
           <Text>
