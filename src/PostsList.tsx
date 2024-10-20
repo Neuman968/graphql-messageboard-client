@@ -6,11 +6,11 @@ import { Box, Paper } from '@mantine/core'
 
 
 export const getPostsQuery = graphql(`
-query getPosts ($limit: Int!) {
-  getPosts {
-      ...PostFragment
-  }
-}
+    query getPosts ($limit: Int!) {
+        getPosts {
+            ...PostFragment
+        }
+    }
 `)
 
 

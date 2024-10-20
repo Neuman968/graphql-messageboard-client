@@ -24,7 +24,7 @@ function AddComment(props: Props) {
 
     const [text, setTextState] = React.useState<string>('')
 
-    const [addComment, { _, loading, error }] = useMutation(addPostComment, {
+    const [addComment, { loading, error }] = useMutation(addPostComment, {
         variables: {
             add: {
                 text: text,
