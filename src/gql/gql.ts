@@ -16,7 +16,7 @@ const documents = {
     "\n    mutation addPostComment($add: AddNewCommentInput!) { \n        addComment(add: $add) {\n            id\n            text\n            authorUser {\n                id\n                name\n            }\n        }\n    }": types.AddPostCommentDocument,
     "\n    fragment PostFragment on Post {\n      id\n      text\n      authorUser {\n        id\n        name\n      }\n      comments(limit: $limit) {\n        id\n        text\n        authorUser {\n          id\n          name\n        }\n      }\n    }\n  ": types.PostFragmentFragmentDoc,
     "\n  fragment UserFragment on User {\n    id\n    name\n  }  \n  ": types.UserFragmentFragmentDoc,
-    "\n    query getPosts ($limit: Int!) {\n        getPosts {\n            ...PostFragment\n        }\n    }\n": types.GetPostsDocument,
+    "\n    query Posts ($limit: Int!) {\n        posts {\n            ...PostFragment\n        }\n    }\n": types.PostsDocument,
 };
 
 /**
@@ -48,7 +48,7 @@ export function graphql(source: "\n  fragment UserFragment on User {\n    id\n  
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query getPosts ($limit: Int!) {\n        getPosts {\n            ...PostFragment\n        }\n    }\n"): (typeof documents)["\n    query getPosts ($limit: Int!) {\n        getPosts {\n            ...PostFragment\n        }\n    }\n"];
+export function graphql(source: "\n    query Posts ($limit: Int!) {\n        posts {\n            ...PostFragment\n        }\n    }\n"): (typeof documents)["\n    query Posts ($limit: Int!) {\n        posts {\n            ...PostFragment\n        }\n    }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

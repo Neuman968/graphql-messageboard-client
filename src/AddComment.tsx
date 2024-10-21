@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Button, Grid, Textarea } from "@mantine/core";
 import { graphql } from "./gql";
 import { useMutation } from "@apollo/client";
-import { getPostsQuery } from './PostsList';
+import { postsQuery } from './PostsList';
 
 const addPostComment = graphql(`
     mutation addPostComment($add: AddNewCommentInput!) { 
@@ -32,7 +32,7 @@ function AddComment(props: Props) {
             }
         },
         refetchQueries: [
-            getPostsQuery, // DocumentNode object parsed with gql
+            postsQuery, // DocumentNode object parsed with gql
             'getPosts' // Query name
         ],
     })

@@ -5,9 +5,9 @@ import PostView from './PostView'
 import { Box, Paper } from '@mantine/core'
 
 
-export const getPostsQuery = graphql(`
-    query getPosts ($limit: Int!) {
-        getPosts {
+export const postsQuery = graphql(`
+    query Posts ($limit: Int!) {
+        posts {
             ...PostFragment
         }
     }
@@ -15,11 +15,11 @@ export const getPostsQuery = graphql(`
 
 
 function PostsList() {
-    const { data } = useQuery(getPostsQuery, { variables: { limit: 10 } })
+    const { data } = useQuery(postsQuery, { variables: { limit: 10 } })
 
     return <Paper>
-        {data?.getPosts != null ?
-            data?.getPosts.map((post) =>
+        {data?.posts!= null ?
+            data?.posts.map((post) =>
                 <Box pt={30}>
                     <PostView post={post} />
                 </Box>
