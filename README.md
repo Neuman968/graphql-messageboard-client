@@ -2,7 +2,7 @@
 
 This is an example React application that uses Typescript and consumes a graphql api. 
 
-See (Link to messageboard servers) for server projects.
+See [Go](https://github.com/Neuman968/GraphQL-Go-Messageboard) and [Spring Boot / Kotlin](https://github.com/Neuman968/spring-graphql-messageboard) for server implementations.
 
 ## Running GraphQL codegen watcher
 
